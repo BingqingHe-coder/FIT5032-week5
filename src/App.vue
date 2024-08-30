@@ -7,10 +7,12 @@ import LibraryRegistrationForm from './components/LibraryRegistrationForm.vue'
 <template>
   <header>
     <BHeader />
+    
   </header>
 
   <main>
-    <LibraryRegistrationForm />
+    <router-view></router-view>
+    <!-- <LibraryRegistrationForm /> -->
     <!-- <JSONLab /> -->
   </main>
 </template>
@@ -43,3 +45,6 @@ import LibraryRegistrationForm from './components/LibraryRegistrationForm.vue'
   }
 } */
 </style>
+
+
+
