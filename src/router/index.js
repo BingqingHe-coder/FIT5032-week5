@@ -3,8 +3,16 @@ import HomeView from '../views/HomeView.vue'
 import AboutView from '../views/AboutView.vue'
 import LoginView from '../views/LoginView.vue'
 import { useAuth } from '../router/auth'
+import FirebaseSigninView from '@/views/FirebaseSigninView.vue'
 
 const routes = [
+  {
+    path: '/FireLogin',
+    name: 'FireLogin',
+    component: FirebaseSigninView
+    
+  },
+
   {
     path: '/',
     name: 'Home',
@@ -27,6 +35,7 @@ const router = createRouter({
   history: createWebHistory(),
   routes
 })
+
 
 
 
