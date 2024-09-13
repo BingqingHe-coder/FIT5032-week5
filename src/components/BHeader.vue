@@ -16,7 +16,7 @@
           <router-link to="/login" class="nav-link" active-class="active">Login</router-link>
         </li>
         <li class="nav-item">
-          <button class="nav-link" active-class="active"  @click="LogoutForm">Logout</button>
+          <router-link to="/logout" class="nav-link" active-class="active">Logout</router-link>
         </li>
         <li class="nav-item">
           <router-link to="/Firelogin" class="nav-link" active-class="active">Firebase Login</router-link>

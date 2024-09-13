@@ -17,31 +17,53 @@
   </template>
   
   <script setup>
-  import { ref } from 'vue';
-  import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-  import { useRouter } from 'vue-router';
-  
-  const email = ref("");
-  const password = ref("");
-  const router = useRouter();
-  const auth = getAuth();
-  
-  const signin = () => {
-    signInWithEmailAndPassword(auth, email.value, password.value)
-      .then((userCredential) => {
-        console.log("Login Successful!");
+
+import { ref } from 'vue';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { useRouter } from 'vue-router';
+
+const email = ref("");
+const password = ref("");
+const router = useRouter();
+const auth = getAuth();
+
+const userRoles = {
+  'admin@example.com': 'admin',
+  'user@example.com': 'user',
+};
+
+const signin = async () => {
+  try {
+    const userCredential = await signInWithEmailAndPassword(auth, email.value, password.value);
+    console.log("Login Successful!");
+
+    const userRole = userRoles[email.value] || 'user';
+
+    switch(userRole) {
+      case 'admin':
+        router.push("/about");
+        break;
+      case 'user':
+        router.push("/login");
+        break;
+      default:
         router.push("/");
-        console.log(auth.currentUser);
-      }).catch((error) => {
-        console.log(error.code);
-      });
-  };
-  
-  const clearForm = () => {
-    email.value = "";
-    password.value = "";
-  };
+    }
+
+    console.log(`User logged in as: ${userRole}`);
+    console.log(auth.currentUser);
+  } catch (error) {
+    console.log(error.code);
+    alert("Login failed: " + error.message);
+  }
+};
+
+const clearForm = () => {
+  email.value = "";
+  password.value = "";
+};
   </script>
+  
   
   <style scoped>
   .login-container {
