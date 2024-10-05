@@ -14,6 +14,31 @@ const functions = require('firebase-functions');
 
 admin.initializeApp();
 
+exports.getAllBooks = onRequest((req, res) => {
+  cors(req, res, async () => {
+    try {
+      console.log("Starting getAllBooks function");
+      const booksCollection = admin.firestore().collection("books");
+      console.log("Querying books collection");
+      const snapshot = await booksCollection.get();
+      
+      const books = [];
+      snapshot.forEach(doc => {
+        books.push({
+          id: doc.id,
+          ...doc.data()
+        });
+      });
+      
+      console.log(`Found ${books.length} books`);
+      res.status(200).json({books});
+    } catch (error) {
+      console.error("Error getting books:", error);
+      res.status(500).json({error: "Error getting books", message: error.message});
+    }
+  });
+});
+
 exports.countBooks = onRequest((req, res) => {
   cors(req, res, async () => {
     try {
@@ -28,7 +53,6 @@ exports.countBooks = onRequest((req, res) => {
     }
   });
 });
-
 exports.capitalizeBook = functions.firestore
     .document('books/{bookId}')
     .onCreate((snap, context) => {
