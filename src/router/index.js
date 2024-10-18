@@ -11,75 +11,75 @@ import GetBookCountView from '@/views/GetBookCountView.vue'
 import WeatherView from '@/views/WeatherView.vue'
 import CountBookAPI from '@/views/CountBookAPI.vue'
 import GetAllBookAPI from '@/views/GetAllBookAPI.vue'
-const routes = [
-  {
-    path:'/GetAllBookAPI',
-    name:'GetAllBookAPI',
-    component: GetAllBookAPI
-
-  },
-  {
-    path:'/CountBookAPI',
-    name:'CountBookAPI',
-    component: CountBookAPI
-
-  },
-  {
-    path:'/WeatherView',
-    name:'WeatherView',
-    component: WeatherView
-
-  },
-  {
-    path:'/GetBookCount',
-    name:'GetBookCount',
-    component: GetBookCountView
-  },
-  {
-    path: '/FireLogin',
-    name: 'FireLogin',
-    component: FirebaseSigninView
-    
-  },
-  {
-    path: '/FireRegister',
-    name: 'FireRegister',
-    component: FirebaseRegisterView
-    
-  },
-  {
-    path: '/addbook',
-    name: 'AddBook',
-    component: AddBookView
-    
-  },
-
-  {
-    path: '/',
-    name: 'Home',
-    component: HomeView
-  },
-  {
-    path: '/about',
-    name: 'About',
-    component: AboutView,
-    meta: { requiresAuth: true } 
-  },
-  {
-    path: '/login',
-    name: 'Login',
-    component: LoginView
-  },
-  {
-    path: '/logout',
-    name: 'Logout',
-    component: LogoutView
-  }
-]
+// const routes = 
 
 const router = createRouter({
   history: createWebHistory(),
-  routes
+  routes: [
+    {
+      path:'/GetAllBookAPI',
+      name:'GetAllBookAPI',
+      component: GetAllBookAPI
+  
+    },
+    {
+      path:'/CountBookAPI',
+      name:'CountBookAPI',
+      component: CountBookAPI
+  
+    },
+    {
+      path:'/WeatherView',
+      name:'WeatherView',
+      component: WeatherView
+  
+    },
+    {
+      path:'/GetBookCount',
+      name:'GetBookCount',
+      component: GetBookCountView
+    },
+    {
+      path: '/FireLogin',
+      name: 'FireLogin',
+      component: FirebaseSigninView
+      
+    },
+    {
+      path: '/FireRegister',
+      name: 'FireRegister',
+      component: FirebaseRegisterView
+      
+    },
+    {
+      path: '/addbook',
+      name: 'AddBook',
+      component: AddBookView
+      
+    },
+  
+    {
+      path: '/',
+      name: 'Home',
+      component: HomeView
+    },
+    {
+      path: '/about',
+      name: 'About',
+      component: AboutView,
+      meta: { requiresAuth: true } 
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: LoginView
+    },
+    {
+      path: '/logout',
+      name: 'Logout',
+      component: LogoutView
+    }
+  ]
 })
 
 
